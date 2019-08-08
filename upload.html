@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <title>Contact ME - Upload</title>
+    <link rel="stylesheet" href="layui/css/layui.css">
+</head>
+
+<body>
+    <div style="text-align: center">
+        <ul class="layui-nav layui-bg-blue" lay-filter="">
+            <li class="layui-nav-item"><a href="index.html">Index</a></li>
+            <li class="layui-nav-item"><a href="addAd.html">Add</a></li>
+            <li class="layui-nav-item"><a href="goto.html">Goto</a></li>
+            <li class="layui-nav-item"><a href="about.html">About</a></li>
+        </ul>
+    </div>
+    <div style="text-align: center">
+        <h1>Upload your photo</h1>
+    </div>
+    <form class="layui-form" action="api/upload.php" method="POST" enctype="multipart/form-data">
+        <div class="layui-form-item" style="display:none">
+            <label class="layui-form-label">Action</label>
+            <div class="layui-input-block">
+                <input type="text" name="action" required lay-verify="required" value="upload" autocomplete="off"
+                    class="layui-input">
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label">ID</label>
+            <div class="layui-input-block">
+                <input type="text" name="id" required lay-verify="required" placeholder="Please enter your id"
+                    autocomplete="off" class="layui-input">
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label">Password</label>
+            <div class="layui-input-block">
+                <input type="password" name="password" required lay-verify="required"
+                    placeholder="Please enter your password" autocomplete="off" class="layui-input">
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <div class="layui-input-block">
+                <input type="file" name="file">
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <div class="layui-input-block">
+                <button class="layui-btn" lay-submit lay-filter="*">Submit</button>
+            </div>
+        </div>
+    </form>
+    <script src="layui/layui.js"></script>
+    <script>
+        layui.use(['layer', 'form', 'element', 'upload'], function () {
+            var layer = layui.layer
+                , form = layui.form
+                , element = layui.element;
+            form.on('select(*)', function (data) {
+
+            });
+        });
+
+    </script>
+</body>
+
+<footer>
+    <div style="text-align: center">
+        All right reserved</br>Contact me:ErohalTheBest@gmail.com
+    </div>
+</footer>
+
+</html>

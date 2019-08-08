@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <title>Contact ME - Index</title>
+    <link rel="stylesheet" href="layui/css/layui.css">
+</head>
+
+<body>
+    <div style="text-align: center">
+        <ul class="layui-nav layui-bg-blue" lay-filter="">
+            <li class="layui-nav-item"><a href="index.html">Index</a></li>
+            <li class="layui-nav-item"><a href="addAd.html">Add</a></li>
+            <li class="layui-nav-item"><a href="goto.html">Goto</a></li>
+            <li class="layui-nav-item"><a href="about.html">About</a></li>
+        </ul>
+    </div>
+
+    <table class="layui-table">
+        <thead>
+            <tr>
+                <th width="10%">Photo</th>
+                <th width="10%">Info</th>
+                <th>Info</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td rowspan="4"><img src="" id="pimg"></td>
+                <td>Name</td>
+                <td id="pname">Loding</td>
+            </tr>
+            <tr>
+                <td>Sex</td>
+                <td id="pgender"><span class="layui-badge layui-bg-blue">Loding</td>
+            </tr>
+            <tr>
+                <td>Age</td>
+                <td id="page">Loding</td>
+            </tr>
+            <tr>
+                <td>Country</td>
+                <td colspan="2" id="pnation">Loding</td>
+            </tr>
+            <tr>
+                <td>Profile</td>
+                <td colspan="2" style="word-break: break-all" id="pprofile">this is my profile!!!</td>
+            </tr>
+            <tr>
+                <td>Email</td>
+                <td colspan="2" id="pemail">Loding</td>
+            </tr>
+            <tr>
+                <td>QQ</td>
+                <td colspan="2" id="pqq">Loding</td>
+            </tr>
+            <tr>
+                <td>Wechat</td>
+                <td colspan="2" id="pwechat">Loding</td>
+            </tr>
+            <tr>
+                <td>Phone</td>
+                <td colspan="2" id="pphone">Loding</td>
+            </tr>
+        </tbody>
+    </table>
+
+
+
+
+
+
+    <script src="layui/layui.js"></script>
+    <script>
+        function getQueryVariable(variable) {
+            var query = window.location.search.substring(1);
+            var vars = query.split("&");
+            for (var i = 0; i < vars.length; i++) {
+                var pair = vars[i].split("=");
+                if (pair[0] == variable) { return pair[1]; }
+            }
+            return (false);
+        }
+        function colourIn(data) {
+            var sex, age;
+            if (data['gender'] == 'male')
+                sex = '<span class="layui-badge layui-bg-blue">' + '♂';
+            else
+                sex = '<span class="layui-badge layui-bg-blue">' + '♀';
+            var date = new Date();
+            date = date.getFullYear();
+            age = data['birth'].substring(0, 4);
+            age = date - age;
+            if(data['pic'] == null){
+                data['gender'] == "male" ? data['pic'] = 'pic/boy.png' : data['pic'] = 'pic/girl.png';
+            }
+            document.getElementById('pimg').src = data['pic'];
+            document.getElementById('pnation').innerHTML = data['nation'];
+            document.getElementById('pname').innerHTML = data['name'];
+            document.getElementById('page').innerHTML = '<span class="layui-badge layui-bg-blue">' + age + '</span>Birth day:' + data['birth']; //todo
+            document.getElementById('pgender').innerHTML = sex;
+            document.getElementById('pprofile').innerHTML = data['profile']
+            document.getElementById('pemail').innerHTML = data['email'];
+            document.getElementById('pqq').innerHTML = data['qq'];
+            document.getElementById('pwechat').innerHTML = data['wechat'];
+            document.getElementById('pphone').innerHTML = data['phone'];
+
+        }
+        layui.use(['layer', 'form', 'element'], function () {
+            var layer = layui.layer
+                , form = layui.form
+                , element = layui.element;
+            xmlHttpRequest = new XMLHttpRequest();
+            xmlHttpRequest.onreadystatechange = function () {
+                if (xmlHttpRequest.readyState == 4 && xmlHttpRequest.status == 200) {
+                    var result = JSON.parse(xmlHttpRequest.responseText);
+                    if (result['code'] == 200) {
+                        colourIn(result);
+                    } else {
+                        layer.msg(result['msg']);
+                    }
+                } else {
+                    layer.msg("Wait a second");
+                }
+            };
+            xmlHttpRequest.open("POST", "api/api.php", true);
+            xmlHttpRequest.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+            xmlHttpRequest.send('action=getinfo&id=' + getQueryVariable('id'));
+        });
+    </script>
+</body>
+
+<footer>
+    <script>
+        function goback() {
+            window.history.back(-1);
+        }
+        function modifyp() {
+
+        }
+        function deletep() {
+            window.location.href = 'delete.html?id=' + getQueryVariable('id');
+        }
+    </script>
+    <div style="text-align: center">
+        <button type="button" class="layui-btn layui-btn-sm layui-btn-normal" onclick="goback()"><i
+                class="layui-icon">Go back</i></button>
+        <button type="button" class="layui-btn layui-btn-sm layui-btn-normal" onclick="modifyp()" id="pmodify"><i
+                class="layui-icon">Modify</i></button>
+        <button type="button" class="layui-btn layui-btn-sm layui-btn-normal" onclick="deletep()" id="pdelete"><i
+                class="layui-icon">Delete</i></button>
+    </div>
+    <div style="text-align: center">
+        All right reserved</br>Contact me:ErohalTheBest@gmail.com
+    </div>
+</footer>
+
+</html>

@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <title>Contact ME - Delete</title>
+    <link rel="stylesheet" href="layui/css/layui.css">
+</head>
+
+<body>
+    <div style="text-align: center">
+        <ul class="layui-nav layui-bg-blue" lay-filter="">
+            <li class="layui-nav-item"><a href="index.html">Index</a></li>
+            <li class="layui-nav-item"><a href="addAd.html">Add</a></li>
+            <li class="layui-nav-item"><a href="goto.html">Goto</a></li>
+            <li class="layui-nav-item"><a href="about.html">About</a></li>
+        </ul>
+    </div>
+    <div style="text-align: center">
+        <h1>Delete your page</h1>
+    </div>
+    <form class="layui-form">
+        <div class="layui-form-item">
+            <label class="layui-form-label">Action</label>
+            <div class="layui-input-block">
+                <input type="text" name="action" value="delete" disabled autocomplete="off" class="layui-input">
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label">ID</label>
+            <div class="layui-input-block">
+                <input type="text" name="id" required lay-verify="required" placeholder="Please enter your id"
+                    autocomplete="off" class="layui-input" id="pid">
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label">Password</label>
+            <div class="layui-input-block">
+                <input type="password" name="password" required lay-verify="required"
+                    placeholder="Please enter your password" autocomplete="off" class="layui-input">
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <div class="layui-input-block">
+                <button class="layui-btn layui-btn-danger" lay-submit lay-filter="deletePage">Delete</button>
+            </div>
+        </div>
+    </form>
+    <script src="layui/layui.js"></script>
+    <script>
+        layui.use(['layer', 'form', 'element'], function () {
+            var layer = layui.layer
+                , form = layui.form
+                , element = layui.element;
+            function getQueryVariable(variable) {
+                var query = window.location.search.substring(1);
+                var vars = query.split("&");
+                for (var i = 0; i < vars.length; i++) {
+                    var pair = vars[i].split("=");
+                    if (pair[0] == variable) { return pair[1]; }
+                }
+                return (false);
+            }
+            function parseParams(data) {
+                try {
+                    var tempArr = [];
+                    for (var i in data) {
+                        var key = encodeURIComponent(i);
+                        var value = encodeURIComponent(data[i]);
+                        tempArr.push(key + '=' + value);
+                    }
+                    var urlParamsStr = tempArr.join('&');
+                    return urlParamsStr;
+                } catch (err) {
+                    return '';
+                }
+            }
+            var id = getQueryVariable('id');
+            if(id == false) id = '';
+            document.getElementById('pid').value = id; 
+            form.on('submit(deletePage)', function (data) {
+                xmlHttpRequest = new XMLHttpRequest();
+                xmlHttpRequest.onreadystatechange = function () {
+                    if (xmlHttpRequest.readyState == 4 && xmlHttpRequest.status == 200) {
+                        var result = JSON.parse(xmlHttpRequest.responseText);
+                        if (result['code'] == 200) {
+                            layer.msg('Delete success');
+                        } else {
+                            layer.msg(result['msg']);
+                        }
+                    } else {
+                        layer.msg("Wait a second");
+                    }
+                };
+                xmlHttpRequest.open("POST", "api/api.php", true);
+                xmlHttpRequest.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+                xmlHttpRequest.send(parseParams(data.field));
+
+
+                return false;
+            });
+        });
+    </script>
+</body>
+
+<footer>
+    <div style="text-align: center">
+        All right reserved</br>Contact me:ErohalTheBest@gmail.com
+    </div>
+</footer>
+
+</html>

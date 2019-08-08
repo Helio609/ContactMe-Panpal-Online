@@ -1,0 +1,462 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <title>Contact ME - Add my ad</title>
+    <link rel="stylesheet" href="layui/css/layui.css">
+</head>
+
+<body>
+    <div style="text-align: center">
+        <ul class="layui-nav layui-bg-blue" lay-filter="">
+            <li class="layui-nav-item"><a href="index.html">Index</a></li>
+            <li class="layui-nav-item layui-this"><a href="addAd.html">Add</a></li>
+            <li class="layui-nav-item"><a href="goto.html">Goto</a></li>
+            <li class="layui-nav-item"><a href="about.html">About</a></li>
+        </ul>
+    </div>
+    <div style="text-align: center">
+        <h1>Add your owm ad.</h2>
+            </br>
+            </br>
+    </div>
+    <form class="layui-form">
+    <div class="layui-form-item">
+        <label class="layui-form-label">Action</label>
+        <div class="layui-input-block">
+            <input type="text" name="action" value="add" disabled autocomplete="off" class="layui-input">
+        </div>
+    </div>
+    <div class="layui-form-item">
+        <label class="layui-form-label">Name</label>
+        <div class="layui-input-block">
+            <input type="text" name="name" required lay-verify="required" placeholder="Please enter your name"
+                autocomplete="off" class="layui-input">
+        </div>
+    </div>
+    <div class="layui-form-item">
+        <label class="layui-form-label">Password</label>
+        <div class="layui-input-inline">
+            <input type="password" name="password" required lay-verify="required"
+                placeholder="Pease enter your password" autocomplete="off" class="layui-input">
+        </div>
+        <div class="layui-form-mid layui-word-aux">Your id(you will get later) and password help us recognize you
+        </div>
+    </div>
+    <div class="layui-form-item">
+        <label class="layui-form-label">Birth</label>
+        <div class="layui-input-block">
+            <input type="date" name="birth">
+        </div>
+    </div>
+    <div class="layui-form-item">
+        <label class="layui-form-label">Sex</label>
+        <div class="layui-input-block">
+            <input type="radio" name="gender" value="male" title="boy">
+            <input type="radio" name="gender" value="famale" title="girl">
+        </div>
+    </div>
+    <div class="layui-form-item">
+        <label class="layui-form-label">Country</label>
+        <div class="layui-input-block">
+            <select name="nation" lay-verify="required">
+                <option value=""></option>
+                <OPTION VALUE="AFG"> Afganistan
+                <OPTION VALUE="ALB"> Albania
+                <OPTION VALUE="ALG"> Algeria
+                <OPTION VALUE="SAA"> American Samoa
+                <OPTION VALUE="AND"> Andorra
+                <OPTION VALUE="AGL"> Angola
+                <OPTION VALUE="AGI"> Anguilla
+                <OPTION VALUE="ATG"> Antigua & Barbuda
+                <OPTION VALUE="UAE"> Arab Emirates (United)
+                <OPTION VALUE="ARG"> Argentina
+                <OPTION VALUE="ARM"> Armenia
+                <OPTION VALUE="ARU"> Aruba
+                <OPTION VALUE="AUS"> Australia
+                <OPTION VALUE="CHR"> Australia >> Christmas Island
+                <OPTION VALUE="NFK"> Australia >> Norfolk
+                <OPTION VALUE="AUT"> Austria
+                <OPTION VALUE="AZE"> Azerbaijan
+                <OPTION VALUE="AZR"> Azores
+
+                <OPTION VALUE="BAH"> Bahamas
+                <OPTION VALUE="BHR"> Bahrain
+                <OPTION VALUE="BNG"> Bangladesh
+                <OPTION VALUE="BRB"> Barbados
+                <OPTION VALUE="BLR"> Belarus
+                <OPTION VALUE="BEL"> Belgium
+                <OPTION VALUE="BLZ"> Belize
+                <OPTION VALUE="BEN"> Benin
+                <OPTION VALUE="BER"> Bermuda
+                <OPTION VALUE="BHU"> Bhutan
+                <OPTION VALUE="BOL"> Bolivia
+                <OPTION VALUE="BOS"> Bosnia & Herzegovina
+                <OPTION VALUE="BOT"> Botswana
+                <OPTION VALUE="BRA"> Brazil
+                <OPTION VALUE="BRU"> Brunei Darussalam
+                <OPTION VALUE="BUL"> Bulgaria
+                <OPTION VALUE="BFS"> Burkina Faso
+                <OPTION VALUE="MMR"> Burma (Myanmar)
+                <OPTION VALUE="BDI"> Burundi
+
+                <OPTION VALUE="CBG"> Cambodia
+                <OPTION VALUE="CAM"> Cameroon
+                <OPTION VALUE="CAN"> Canada
+                <OPTION VALUE="ICA"> Canary Islands
+                <OPTION VALUE="CAV"> Cape Verde
+                <OPTION VALUE="CYM"> Cayman Islands
+                <OPTION VALUE="CAF"> Central African Rep.
+                <OPTION VALUE="TCD"> Chad
+                <OPTION VALUE="JER"> Channel Islands
+                <OPTION VALUE="CHL"> Chile
+                <OPTION VALUE="CHN"> China
+                <OPTION VALUE="HKG"> Chine >> Hong Kong
+                <OPTION VALUE="MAC"> China >> Macau
+                <OPTION VALUE="TAI"> China >> Taiwan
+                <OPTION VALUE="CHR"> Christmas Island
+                <OPTION VALUE="COL"> Colombia
+                <OPTION VALUE="COM"> Comoros
+                <OPTION VALUE="COG"> Congo
+                <OPTION VALUE="ZAI"> Congo Dem. Rep.
+                <OPTION VALUE="COK"> Cook Islands
+                <OPTION VALUE="CRI"> Costa Rica
+                <OPTION VALUE="CRO"> Croatia
+                <OPTION VALUE="CUB"> Cuba
+                <OPTION VALUE="CYP"> Cyprus
+                <OPTION VALUE="TCH"> Czech Rep.
+
+                <OPTION VALUE="DNK"> Denmark
+                <OPTION VALUE="FRO"> Denmark >> Faroe Islands
+                <OPTION VALUE="DJI"> Djibouti
+                <OPTION VALUE="DMA"> Dominica
+                <OPTION VALUE="DOM"> Dominican Rep.
+
+                <OPTION VALUE="TIM"> East Timor
+                <OPTION VALUE="ECU"> Ecuador
+                <OPTION VALUE="EGY"> Egypt
+                <OPTION VALUE="GNE"> Equatorial Guinea
+                <OPTION VALUE="ERI"> Eritrea
+                <OPTION VALUE="EST"> Estonia
+                <OPTION VALUE="ETH"> Ethiopia
+
+                <OPTION VALUE="FLK"> Falkland Islands
+                <OPTION VALUE="FRO"> Faroe Islands
+                <OPTION VALUE="FIJ"> Fiji
+                <OPTION VALUE="FIN"> Finland
+                <OPTION VALUE="FRA"> France
+                <OPTION VALUE="GDL"> France >> Guadeloupe
+                <OPTION VALUE="GIA"> France >> French Guiana
+                <OPTION VALUE="MTN"> France >> Martinique
+                <OPTION VALUE="MYT"> France >> Mayotte
+                <OPTION VALUE="NCL"> France >> New Caledonia
+                <OPTION VALUE="PFR"> France >> French Polynesia
+                <OPTION VALUE="REU"> France >> Reunion
+                <OPTION VALUE="SPM"> France >> St-Pierre & Miquelon
+
+                <OPTION VALUE="GAB"> Gabon
+                <OPTION VALUE="GAM"> Gambia
+                <OPTION VALUE="GEO"> Georgia
+                <OPTION VALUE="GER"> Germany
+                <OPTION VALUE="GHA"> Ghana
+                <OPTION VALUE="GIB"> Gibraltar
+                <OPTION VALUE="GBR"> Great Britain
+                <OPTION VALUE="MAN"> Great Britain >> Isle of Man
+                <OPTION VALUE="JER"> Great Britain >> Jersey & G.
+                <OPTION VALUE="GRE"> Greece
+                <OPTION VALUE="GRL"> Greenland
+                <OPTION VALUE="GRD"> Grenada
+                <OPTION VALUE="GDL"> Guadeloupe
+                <OPTION VALUE="GUM"> Guam
+                <OPTION VALUE="GTM"> Guatemala
+                <OPTION VALUE="GIA"> Guiana (French)
+                <OPTION VALUE="GUI"> Guinea
+                <OPTION VALUE="GNB"> Guinea-Bissau
+                <OPTION VALUE="GNE"> Guinea (Equat.)
+                <OPTION VALUE="GUY"> Guyana
+
+                <OPTION VALUE="HAI"> Haiti
+                <OPTION VALUE="HAW"> Hawaii Islands
+                <OPTION VALUE="HND"> Honduras
+                <OPTION VALUE="HKG"> Hong Kong
+                <OPTION VALUE="HUN"> Hungary
+
+                <OPTION VALUE="ISL"> Iceland
+                <OPTION VALUE="IND"> India
+                <OPTION VALUE="IDN"> Indonesia
+                <OPTION VALUE="IRQ"> Iraq
+                <OPTION VALUE="IRN"> Iran
+                <OPTION VALUE="IRL"> Ireland
+                <OPTION VALUE="MAN"> Isle of Man
+                <OPTION VALUE="ISR"> Israel
+                <OPTION VALUE="ITA"> Italy
+                <OPTION VALUE="CIV"> Ivory Coast
+
+                <OPTION VALUE="JAM"> Jamaica
+                <OPTION VALUE="JAP"> Japan
+                <OPTION VALUE="JER"> Jersey & Guernsey
+                <OPTION VALUE="JOR"> Jordan
+
+                <OPTION VALUE="KAZ"> Kazakhstan
+                <OPTION VALUE="KEN"> Kenya
+                <OPTION VALUE="KIR"> Kiribati
+                <OPTION VALUE="KOR"> Korea
+                <OPTION VALUE="KUW"> Kuwait
+                <OPTION VALUE="KGZ"> Kyrgyzstan
+
+                <OPTION VALUE="LAO"> Laos
+                <OPTION VALUE="LAT"> Latvia
+                <OPTION VALUE="LIB"> Lebanon
+                <OPTION VALUE="LSO"> Lesotho
+                <OPTION VALUE="LBR"> Liberia
+                <OPTION VALUE="LBY"> Libya
+                <OPTION VALUE="LIE"> Liechtenstein
+                <OPTION VALUE="LIT"> Lithuania
+                <OPTION VALUE="LUX"> Luxembourg
+
+                <OPTION VALUE="MAC"> Macau
+                <OPTION VALUE="MKD"> Macedonia
+                <OPTION VALUE="MAD"> Madagascar
+                <OPTION VALUE="MDR"> Madeira
+                <OPTION VALUE="MWI"> Malawi
+                <OPTION VALUE="MLS"> Malaysia
+                <OPTION VALUE="MLD"> Maldives
+                <OPTION VALUE="MLI"> Mali
+                <OPTION VALUE="MLT"> Malta
+                <OPTION VALUE="MAN"> Man (Isle)
+                <OPTION VALUE="MRN"> Mariana Islands
+                <OPTION VALUE="MHL"> Marshall Islands
+                <OPTION VALUE="MTN"> Martinique
+                <OPTION VALUE="MRT"> Mauritania
+                <OPTION VALUE="MRI"> Mauritius
+                <OPTION VALUE="MYT"> Mayotte
+                <OPTION VALUE="MEX"> Mexico
+                <OPTION VALUE="MIC"> Micronesia
+                <OPTION VALUE="MOL"> Moldova
+                <OPTION VALUE="MCO"> Monaco
+                <OPTION VALUE="MNG"> Mongolia
+                <OPTION VALUE="MSR"> Montserrat
+                <OPTION VALUE="MAR"> Morocco
+                <OPTION VALUE="MOZ"> Mozambique
+                <OPTION VALUE="MMR"> Myanmar
+
+                <OPTION VALUE="NAM"> Namibia
+                <OPTION VALUE="NRU"> Nauru
+                <OPTION VALUE="NEP"> Nepal
+                <OPTION VALUE="NED"> Netherlands
+                <OPTION VALUE="ATN"> Netherlands Antilles
+                <OPTION VALUE="NCL"> New Caledonia
+                <OPTION VALUE="NZL"> New Zealand
+                <OPTION VALUE="NIC"> Nicaragua
+                <OPTION VALUE="NGR"> Niger
+                <OPTION VALUE="NIU"> Niue
+                <OPTION VALUE="NIG"> Nigeria
+                <OPTION VALUE="NFK"> Norfolk
+                <OPTION VALUE="MRN"> Northern Mariana Isl.
+                <OPTION VALUE="NOR"> Norway
+
+                <OPTION VALUE="OMA"> Oman
+
+                <OPTION VALUE="PAK"> Pakistan
+                <OPTION VALUE="PLW"> Palau
+                <OPTION VALUE="PAL"> Palestine
+                <OPTION VALUE="PAN"> Panama
+                <OPTION VALUE="PNG"> Papua New Guinea
+                <OPTION VALUE="PAR"> Paraguay
+                <OPTION VALUE="PER"> Peru
+                <OPTION VALUE="PHL"> Philippines
+                <OPTION VALUE="PIT"> Pitcairn
+                <OPTION VALUE="POL"> Poland
+                <OPTION VALUE="PFR"> Polynesia (French)
+                <OPTION VALUE="PRT"> Portugal
+                <OPTION VALUE="AZR"> Portugal >> Azores
+                <OPTION VALUE="MDR"> Portugal >> Madeira
+                <OPTION VALUE="PRI"> Puerto Rico
+
+                <OPTION VALUE="QAT"> Qatar
+
+                <OPTION VALUE="REU"> Reunion
+                <OPTION VALUE="ROM"> Romania
+                <OPTION VALUE="RUS"> Russia
+                <OPTION VALUE="RWA"> Rwanda
+
+                <OPTION VALUE="SHE"> Saint Helena
+                <OPTION VALUE="SKN"> Saint Kitts & Nevis
+                <OPTION VALUE="SLU"> Saint Lucia
+                <OPTION VALUE="SPM"> Saint Pierre & Miquelon
+                <OPTION VALUE="VCT"> Saint Vincent & Grenadines
+                <OPTION VALUE="SLV"> Salvador
+                <OPTION VALUE="SAA"> Samoa (American)
+                <OPTION VALUE="SAM"> Samoa (Western)
+                <OPTION VALUE="SMR"> San Marino
+                <OPTION VALUE="STP"> Sao Tome & Principe
+                <OPTION VALUE="SAU"> Saudi Arabia
+                <OPTION VALUE="SEN"> Senegal
+                <OPTION VALUE="SEY"> Seychelles
+                <OPTION VALUE="SLE"> Sierra Leone
+                <OPTION VALUE="SGP"> Singapore
+                <OPTION VALUE="SLO"> Slovakia
+                <OPTION VALUE="SVN"> Slovenia
+                <OPTION VALUE="SLM"> Solomon
+                <OPTION VALUE="SOM"> Somalia
+                <OPTION VALUE="SAF"> South Africa
+                <OPTION VALUE="ESP"> Spain
+                <OPTION VALUE="ICA"> Spain / Canary
+                <OPTION VALUE="SRI"> Sri Lanka
+                <OPTION VALUE="SDN"> Sudan
+                <OPTION VALUE="SUR"> Suriname
+                <OPTION VALUE="SWA"> Swaziland
+                <OPTION VALUE="SWE"> Sweden
+                <OPTION VALUE="SUI"> Switzerland
+                <OPTION VALUE="SYR"> Syria
+
+                <OPTION VALUE="TAI"> Taiwan
+                <OPTION VALUE="TJK"> Tajikistan
+                <OPTION VALUE="TZA"> Tanzania
+                <OPTION VALUE="THA"> Thailand
+                <OPTION VALUE="TOG"> Togo
+                <OPTION VALUE="TOK"> Tokelau
+                <OPTION VALUE="TON"> Tonga
+                <OPTION VALUE="TRI"> Trinidad & Tobago
+                <OPTION VALUE="TUN"> Tunisia
+                <OPTION VALUE="TUR"> Turkey
+                <OPTION VALUE="TKM"> Turkmenistan
+                <OPTION VALUE="TCA"> Turks & Caicos Islands
+                <OPTION VALUE="TUV"> Tuvalu
+
+                <OPTION VALUE="UGA"> Uganda
+                <OPTION VALUE="UKR"> Ukraine
+                <OPTION VALUE="UAE"> United Arab Emirates
+                <OPTION VALUE="GBR"> United Kingdom
+                <OPTION VALUE="URU"> Uruguay
+                <OPTION VALUE="USA"> USA
+                <OPTION VALUE="ALA"> USA >> Alaska
+                <OPTION VALUE="HAW"> USA >> Hawaii
+                <OPTION VALUE="GUM"> USA >> Guam
+                <OPTION VALUE="SAA"> USA >> American Samoa
+                <OPTION VALUE="UZB"> Uzbekistan
+
+                <OPTION VALUE="VAN"> Vanuatu
+                <OPTION VALUE="VAT"> Vatican
+                <OPTION VALUE="VEN"> Venezuela
+                <OPTION VALUE="VTN"> Viet Nam
+                <OPTION VALUE="VRG"> Virgin Island GB
+                <OPTION VALUE="VIR"> Virgin Island US
+
+                <OPTION VALUE="WAL"> Wallis & Futuna
+                <OPTION VALUE="SAH"> Western Sahara
+                <OPTION VALUE="SAM"> Western Samoa
+
+                <OPTION VALUE="YEM"> Yemen
+                <OPTION VALUE="YUG"> Yugoslavia
+
+                <OPTION VALUE="ZAI"> Zaire (Congo Dem.Rep)
+                <OPTION VALUE="ZAM"> Zambia
+                <OPTION VALUE="ZIM"> Zimbabwe
+            </select>
+        </div>
+    </div>
+    <div style="text-align: center" class="layui-form-item">
+        <p>Be care to your personal information!</p>
+    </div>
+    <div class="layui-form-item">
+        <label class="layui-form-label">Email</label>
+        <div class="layui-input-block">
+            <input type="email" name="email" placeholder="optional" autocomplete="email" class="layui-input">
+        </div>
+    </div>
+    <div class="layui-form-item">
+        <label class="layui-form-label">QQ</label>
+        <div class="layui-input-block">
+            <input type="email" name="qq" placeholder="Optional" autocomplete="off" class="layui-input">
+        </div>
+    </div>
+    <div class="layui-form-item">
+        <label class="layui-form-label">Phone</label>
+        <div class="layui-input-block">
+            <input type="email" name="phone" placeholder="optional" autocomplete="off" class="layui-input">
+        </div>
+    </div>
+    <div class="layui-form-item">
+        <label class="layui-form-label">Wechat</label>
+        <div class="layui-input-block">
+            <input type="email" name="wechat" placeholder="optional" autocomplete="off" class="layui-input">
+        </div>
+    </div>
+    <div class="layui-form-item layui-form-text">
+        <label class="layui-form-label">Remarks</label>
+        <div class="layui-input-block">
+            <textarea name="profile" required lay-verify="required" placeholder="What do you want to improve or ..."
+                class="layui-textarea"></textarea>
+        </div>
+    </div>
+    <div class="layui-form-item">
+        <div class="layui-input-block">
+            <button class="layui-btn" lay-submit lay-filter="addAdForm" id="commitB">Commit</button>
+            <button type="reset" class="layui-btn layui-btn-primary" id="resetB">Reset</button>
+        </div>
+    </div>
+    </form>
+
+    <script src="layui/layui.js"></script>
+    <script>
+        function parseParams(data) {
+            try {
+                var tempArr = [];
+                for (var i in data) {
+                    var key = encodeURIComponent(i);
+                    var value = encodeURIComponent(data[i]);
+                    tempArr.push(key + '=' + value);
+                }
+                var urlParamsStr = tempArr.join('&');
+                return urlParamsStr;
+            } catch (err) {
+                return '';
+            }
+        }
+        layui.use(['layer', 'form', 'element'], function () {
+            var layer = layui.layer,
+                form = layui.form,
+                element = layui.element;
+            form.on('submit(addAdForm)', function (data) {
+
+                xmlHttpRequest = new XMLHttpRequest();
+                xmlHttpRequest.onreadystatechange = function () {
+                    if (xmlHttpRequest.readyState == 4 && xmlHttpRequest.status == 200) {
+                        document.getElementById("commitB").setAttribute('disabled', true);
+                        document.getElementById("resetB").setAttribute('disabled', true);
+                        var result = JSON.parse(xmlHttpRequest.responseText);
+                        if (result['code'] == 200) {
+                            layer.msg('Your ad has been created,</br>We will auto redirect to your page,</br>please remenber your id:' + result['id'], {
+                                time: 10000,
+                                btn: ['OK']
+                            });
+                            setTimeout(function () {
+                                window.location.href = 'mypage.html?id=' + result['id'];
+                            }, 10000)
+                        } else {
+                            document.getElementById("commitB").setAttribute('disabled', false);
+                            layer.msg(result['msg']);
+                        }
+                    } else {
+                        layer.msg("Wait a second");
+                    }
+                };
+                xmlHttpRequest.open("POST", "api/api.php", true);
+                xmlHttpRequest.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+                xmlHttpRequest.send(parseParams(data.field));
+                return false;
+            });
+        });
+    </script>
+</body>
+
+<footer>
+    <div style="text-align: center">
+        All right reserved</br>Contact me:ErohalTheBest@gmail.com
+    </div>
+</footer>
+
+</html>

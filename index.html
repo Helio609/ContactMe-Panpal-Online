@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <title>Contact ME - Index</title>
+    <link rel="stylesheet" href="layui/css/layui.css">
+</head>
+
+<body>
+    <div style="text-align: center">
+        <ul class="layui-nav layui-bg-blue" lay-filter="">
+            <li class="layui-nav-item layui-this"><a href="index.html">Index</a></li>
+            <li class="layui-nav-item"><a href="addAd.html">Add</a></li>
+            <li class="layui-nav-item"><a href="goto.html">Goto</a></li>
+            <li class="layui-nav-item"><a href="about.html">About</a></li>
+        </ul>
+    </div>
+
+    <table class="layui-table">
+        <colgroup>
+            <col width="150">
+            <col width="200">
+            <col>
+        </colgroup>
+        <thead>
+            <tr>
+                <th>Photo</th>
+                <th style="width: 20%">Info</th>
+                <th>Profile</th>
+            </tr>
+        </thead>
+        <tbody id="addAim">
+        </tbody>
+    </table>
+
+    <script src="layui/layui.js"></script>
+    <script>
+        var parent = document.getElementById('addAim');
+        var totalPages;
+        var offset = 1;
+        var layerP;
+        layui.use(['layer', 'form', 'element'], function () {
+
+            var layer = layui.layer
+                , form = layui.form
+                , element = layui.element;
+            layerP = layer;
+            getInfoList(1);
+        });
+        function addNewAd(pic, name, age, gender, profile, id) {
+            var node = document.createElement('tr');
+            var nodePic = document.createElement('td');
+            var nodePicChild = document.createElement('img');
+            var nodeName = document.createElement('td');
+            var nodeProfile = document.createElement('td');
+
+            var sex;
+            var genderColor;
+            if (pic == null)
+                gender == "male" ? pic = 'pic/boy.png' : pic = 'pic/girl.png';
+            if (gender == "male") {
+                sex = '♂'
+                genderColor = ' layui-bg-blue';
+            } else {
+                genderColor = '';
+                sex = '♀';
+            }
+
+            nodePicChild.src = pic;
+
+            nodePic.width = '20%';
+            nodePic.height = '20%';
+            nodeName.style = "word-break:break-all";
+            nodePic.appendChild(nodePicChild);
+
+            nodeName.innerHTML = '<a href="mypage.html?id=' + id + '">' + name + '</a>' + '<span class="layui-badge' + genderColor + '">' + sex + ' ' + age + '</span>';
+            nodeProfile.innerHTML = profile;
+            nodeProfile.style = "word-break: break-all";
+            node.appendChild(nodePic);
+            node.appendChild(nodeName);
+            node.appendChild(nodeProfile);
+            return node;
+        }
+        function deleteAllAd(parent) {
+            for (var i = parent.childNodes.length - 1; i >= 0; i--) {
+                parent.removeChild(parent.childNodes[i]);
+            }
+        }
+        function cAge(birth) {
+            var date = new Date().getFullYear();
+            var pdate = birth.substring(0, 4);
+            return date - pdate;
+        }
+        function getInfoList(offset) {
+            var loadIndex = layerP.load(3);
+            xmlHttpRequest = new XMLHttpRequest();
+            xmlHttpRequest.onreadystatechange = function () {
+                if (xmlHttpRequest.readyState == 4 && xmlHttpRequest.status == 200) {
+                    var result = JSON.parse(xmlHttpRequest.responseText);
+                    if (result['code'] == 200) {
+                        totalPages = result['totalPages'];
+                        colourIn(xmlHttpRequest.responseText);
+
+                        (function smoothscroll() {
+                            var currentScroll = document.documentElement.scrollTop || document.body.scrollTop;
+                            if (currentScroll > 0) {
+                                window.requestAnimationFrame(smoothscroll);
+                                window.scrollTo(0, currentScroll - (currentScroll / 5));
+                            }
+                        })();
+
+                    } else {
+                        layer.msg(result['msg']);
+                    }
+                    layerP.close(loadIndex);
+                } else {
+                    //layer.msg("Wait a second");
+                }
+            };
+            xmlHttpRequest.open("POST", "api/api.php", true);
+            xmlHttpRequest.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+            xmlHttpRequest.send('action=getinfolist&offset=' + offset);
+        }
+        function colourIn(data) {
+            data = JSON.parse(data)['mem'];
+            deleteAllAd(parent);
+            for (var i = 0; i < data.length; ++i) {
+                parent.appendChild(addNewAd(data[i]['pic'], data[i]['name'], cAge(data[i]['birth']), data[i]['gender'], data[i]['profile'], data[i]['id']));
+            }
+        }
+
+    </script>
+</body>
+
+<footer>
+    <div style="text-align: center">
+        <button type="button" class="layui-btn layui-btn-sm layui-btn-normal" onclick="prev()" id="pprev"><i
+                class="layui-icon"></i></button>
+        <button type="button" class="layui-btn layui-btn-sm layui-btn-warm" onclick="next()" id="pnext"><i
+                class="layui-icon"></i></button>
+    </div>
+    <div style="text-align: center">
+        All right reserved</br>Contact me:ErohalTheBest@gmail.com
+    </div>
+    <script>
+        function prev() {
+            if (offset <= 1) {
+                layerP.msg('In the First Page');
+                return false;
+            }
+            offset = offset - 1;
+            getInfoList(offset);
+        }
+        function next() {
+            if (offset >= totalPages){
+                layerP.msg('In the Last Page');
+                return false;
+            }
+            offset = offset + 1;
+            getInfoList(offset);
+        }
+    </script>
+</footer>
+
+</html>
