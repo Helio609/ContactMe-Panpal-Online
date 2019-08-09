@@ -2,9 +2,9 @@
 class DBS{
 	private $conn = null;
 	private $host = 'localhost';
-	private $user = 'sql_dczxrbkg';
-	private $pwd = 'erohal2017';
-	private $db = 'sql_dczxrbkg';
+	private $user = '';
+	private $pwd = '';
+	private $db = '';
 	function __construct(){
 		$this->conn = new mysqli($this->host,$this->user,$this->pwd,$this->db);
 		$this->conn->query('SET NAMES utf8');
